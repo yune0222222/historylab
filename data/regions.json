@@ -286,6 +286,18 @@
 "https://data.bis.org",
 "free",
 "BIS 이용조건 · 무료층"
+],
+"wb": [
+"World Bank World Development Indicators (API, 연간)",
+"https://data.worldbank.org",
+"ok",
+"CC BY 4.0 · “Source: World Bank” 표기 · 브라우저에서 실시간 조회"
+],
+"reb": [
+"한국부동산원 아파트 매매 실거래가격지수 (한국은행 ECOS 901Y089 경유)",
+"https://ecos.bok.or.kr",
+"check",
+"타 기관(한국부동산원) 작성 통계 · 출처표기 · 상업 이용조건 재확인"
 ]
 },
 "series_order": [
@@ -294,7 +306,12 @@
 "m2",
 "rate",
 "fx",
-"stock"
+"stock",
+"gdp",
+"cpi",
+"unemp",
+"lend",
+"bm"
 ],
 "series_names": {
 "price": "집값",
@@ -302,7 +319,12 @@
 "m2": "통화량",
 "rate": "기준금리",
 "fx": "환율",
-"stock": "주가지수"
+"stock": "주가지수",
+"gdp": "GDP 성장률",
+"cpi": "물가상승률",
+"unemp": "실업률",
+"lend": "대출금리",
+"bm": "M2 증가율"
 },
 "built": "2026-10-30"
 }

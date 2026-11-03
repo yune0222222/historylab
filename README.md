@@ -16,6 +16,7 @@ cd site && python3 -m http.server 8000   # → http://localhost:8000
 export ECOS_API_KEY=발급받은_개인키      # https://ecos.bok.or.kr/api/ 에서 무료 발급
 python3 scripts/ecos_fetch.py           # raw/city/ecos_*.json 갱신 (KB 서울·전국, M2, 기준금리, KOSPI)
 python3 scripts/build_site_data.py      # raw/ → site/data/*.json (regions, categories, people)
+python3 scripts/build_search.py         # 탐색기 검색용 site/data/search.json + regions/{c-xx,us-*,kr-*}.json (build_site_data 다음)
 ```
 - 현재 ECOS 데이터는 **공개 sample 키**로 받은 것입니다(호출당 10행, 시연용). 전체 갱신·운영에는 **개인 ECOS 키가 필요**하며 스크립트는 환경변수 `ECOS_API_KEY`만 읽습니다. 키를 파일·코드에 넣지 마세요.
 - 기타 원본(BIS bulk CSV, HM Land Registry, BoE, FHFA, Fed H.6, 국토교통성, BOJ, Insee, ECB, StatCan)은 raw/에 내려받은 파일을 그대로 씁니다. FRED 파일은 약관(저장·캐시 금지) 때문에 사이트에서 쓰지 않습니다.
@@ -42,6 +43,9 @@ python3 scripts/find_candidates.py "Barack Obama"
 - 목록에 없는 이름을 검색하면 Wikidata 공개 API로 프로필만 조회해 '아카이브 준비 중'과 YouTube 검색 링크를 보여 줍니다(영상 자동 추가 없음).
 
 ## 라이선스·이용조건 (1단계 = 비상업)
+- **지역 검색(탐색기):** 기본 15개 지역 외에 나라 217개(World Bank 국가 목록)와 도시 37개(미국 30개 대도시권 FHFA HPI 분기, 한국 6개 광역시+세종 한국부동산원 아파트 실거래가격지수 월)를 검색할 수 있습니다.
+  - 나라: BIS 집값(분기, 58개국)·정책금리(월)·달러환율(월평균)은 미리 빌드한 JSON, **연간** GDP 성장률·물가상승률·실업률·대출금리·M2 증가율·공식환율은 브라우저가 **World Bank Indicators API**(api.worldbank.org, CORS 허용, **CC BY 4.0**, “Source: World Bank”)에서 실시간 조회합니다(키 불필요). 없는 지표는 '미제공'으로 표시.
+  - 한국부동산원 지수는 ECOS(901Y089) 경유 타 기관 통계 — 출처 표기, 상업 이용조건 재확인 필요. FHFA는 CC0.
 - 각 지표의 출처·이용조건은 탐색기 하단 표에 시리즈별로 표시됩니다(`data/regions.json`의 sources).
 - 한국은행 작성 통계는 출처 표기 시 상업 이용 가능. KB 주택가격지수·KRX(KOSPI) 등 타 기관 통계는 **비상업·출처 표기**, 상업 이용은 작성기관 승인 필요. BOJ·BIS 등도 수익화 전 재확인 — PLAN.md 0-2 교체/허가 표 참조.
 - YouTube: 공식 임베드로만 재생, 영상·자막 저장/캐시 없음, 시청에 과금 금지. [YouTube 서비스 약관](https://www.youtube.com/t/terms) · [Google 개인정보처리방침](https://policies.google.com/privacy).
