@@ -1,0 +1,308 @@
+{
+"regions": [
+{
+"id": "seoul",
+"name": "서울",
+"type": "city",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": true,
+"stock": true,
+"price_nat": true
+}
+},
+{
+"id": "korea",
+"name": "한국",
+"type": "country",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": true,
+"stock": true
+}
+},
+{
+"id": "london",
+"name": "런던",
+"type": "city",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": true,
+"stock": false,
+"price_nat": true
+}
+},
+{
+"id": "uk",
+"name": "영국",
+"type": "country",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": true,
+"stock": false
+}
+},
+{
+"id": "nyc",
+"name": "뉴욕",
+"type": "city",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": false,
+"stock": false,
+"price_nat": true
+}
+},
+{
+"id": "sf",
+"name": "샌프란시스코",
+"type": "city",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": false,
+"stock": false,
+"price_nat": true
+}
+},
+{
+"id": "la",
+"name": "LA",
+"type": "city",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": false,
+"stock": false,
+"price_nat": true
+}
+},
+{
+"id": "us",
+"name": "미국",
+"type": "country",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": false,
+"stock": false
+}
+},
+{
+"id": "tokyo",
+"name": "도쿄",
+"type": "city",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": true,
+"stock": false,
+"price_nat": true
+}
+},
+{
+"id": "japan",
+"name": "일본",
+"type": "country",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": true,
+"stock": false
+}
+},
+{
+"id": "paris",
+"name": "파리",
+"type": "city",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": true,
+"stock": false,
+"price_nat": true
+}
+},
+{
+"id": "eurozone",
+"name": "유로존",
+"type": "country",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": true,
+"stock": false
+}
+},
+{
+"id": "toronto",
+"name": "토론토",
+"type": "city",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": true,
+"stock": false,
+"price_nat": true
+}
+},
+{
+"id": "vancouver",
+"name": "밴쿠버",
+"type": "city",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": true,
+"stock": false,
+"price_nat": true
+}
+},
+{
+"id": "canada",
+"name": "캐나다",
+"type": "country",
+"avail": {
+"price": true,
+"m2": true,
+"rate": true,
+"fx": true,
+"stock": false
+}
+}
+],
+"sources": {
+"kb": [
+"KB국민은행 주택매매가격지수 (한국은행 ECOS 901Y062 경유)",
+"https://ecos.bok.or.kr",
+"nc",
+"비상업만(출처표기) · 상업은 KB 승인 필요"
+],
+"ecos": [
+"한국은행 경제통계시스템(ECOS)",
+"https://ecos.bok.or.kr",
+"ok",
+"한국은행 작성 통계 · 출처 명시 시 상업 포함 이용 가능"
+],
+"ecos_krx": [
+"한국거래소 KOSPI (한국은행 ECOS 901Y014 경유)",
+"https://ecos.bok.or.kr",
+"nc",
+"타 기관 작성 통계 · 비상업만, 상업은 KRX 승인"
+],
+"ukhpi": [
+"HM Land Registry UK House Price Index",
+"https://www.gov.uk/government/collections/uk-house-price-index-reports",
+"ok",
+"Open Government Licence v3.0"
+],
+"boe": [
+"Bank of England Database (LPMAUYN)",
+"https://www.bankofengland.co.uk/boeapps/database/",
+"ok",
+"UK Open Government Licence"
+],
+"fhfa": [
+"FHFA House Price Index® (all-transactions, NSA)",
+"https://www.fhfa.gov/data/hpi",
+"ok",
+"CC0(data.gov) · “Source: FHFA HPI®”, 보증 암시 금지"
+],
+"fed": [
+"Federal Reserve Board H.6 (M2, SA)",
+"https://www.federalreserve.gov/releases/h6/",
+"ok",
+"Public domain · 출처 표기 요청"
+],
+"mlit": [
+"国土交通省 不動産価格指数(住宅総合, 季節調整)",
+"https://www.mlit.go.jp/totikensangyo/totikensangyo_tk5_000085.html",
+"check",
+"政府標準利用規約2.0(CC BY 호환) 추정 · 통계 페이지 규약 재확인 필요"
+],
+"boj": [
+"日本銀行 M2 (MAM1NAM2M2MO)",
+"https://www.stat-search.boj.or.jp",
+"nc",
+"출처 “Bank of Japan” 표기 · 상업 목적은 사전 허가"
+],
+"insee": [
+"Insee / Notaires 기존 아파트 가격지수",
+"https://www.insee.fr/fr/statistiques/serie/010567012",
+"check",
+"Licence Ouverte 2.0(2차 확인) · 공증인 데이터 조건 재확인"
+],
+"ecb": [
+"ECB Data Portal (BSI M2)",
+"https://data.ecb.europa.eu",
+"ok",
+"Source: ECB statistics · 수치 변경 금지"
+],
+"statcan_nhpi": [
+"Statistics Canada 18-10-0205-01 (신축주택가격지수, 신축만)",
+"https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1810020501",
+"ok",
+"Statistics Canada Open Licence"
+],
+"statcan_m2": [
+"Statistics Canada 10-10-0116-01 (작성: Bank of Canada)",
+"https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1010011601",
+"check",
+"StatCan Open Licence · BoC 조건 재확인"
+],
+"bis_spp": [
+"BIS Selected residential property prices (명목)",
+"https://data.bis.org",
+"free",
+"BIS 이용조건 · 출처표기 · 유료 추가과금 근거 사용 금지(무료층)"
+],
+"bis_pol": [
+"BIS Central bank policy rates",
+"https://data.bis.org",
+"free",
+"BIS 이용조건 · 무료층"
+],
+"bis_fx": [
+"BIS US dollar exchange rates (월평균)",
+"https://data.bis.org",
+"free",
+"BIS 이용조건 · 무료층"
+]
+},
+"series_order": [
+"price",
+"price_nat",
+"m2",
+"rate",
+"fx",
+"stock"
+],
+"series_names": {
+"price": "집값",
+"price_nat": "전국 집값",
+"m2": "통화량",
+"rate": "기준금리",
+"fx": "환율",
+"stock": "주가지수"
+},
+"built": "2026-10-30"
+}

@@ -1,0 +1,21 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>경제 지표 탐색기 — HistoryLab</title><link rel="stylesheet" href="css/style.css"><script src="js/chart.umd.js"></script></head><body>
+<div class="wrap"><div class="crumb">📈 경제 지표 탐색기 › 📍 <span id="crn"></span></div>
+<h1 class="page">경제 지표 탐색기 — 한 그래프에 겹쳐 보기</h1><div class="sub hide-m">지역을 고르고, 비교할 지표를 켜고 끄세요. 모든 지표가 같은 시간축(월)에 놓입니다.</div>
+<div class="bar"><label class="sel">📍 지역: <select id="rsel" class="sel" style="border:none;padding:0;font-weight:700;color:#2f45c9"></select></label>
+<div class="reg" id="rchips"></div><div style="flex:1" class="hide-m"></div>
+<div class="toggle" id="modeT"><div data-v="multi">원 단위 · 다중 축</div><div data-v="rebase">100 재기준</div></div>
+<label class="sel hide-m">기간 <select id="y0"></select> ~ <select id="y1"></select></label></div>
+<div class="mhint" style="display:none;font-size:12px;color:#6b7489;margin-bottom:6px">← 밀어서 지표 더 보기</div>
+<div class="picker" id="picker"></div>
+<div class="story-only card" id="story" style="margin-bottom:12px"></div>
+<div class="row"><div class="card col" style="flex:2.3;min-width:0">
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><b id="ctitle"></b><span class="tag real">실제 데이터</span><label style="font-size:12px"><input type="checkbox" id="shadeT" checked> 금리 인상기 음영</label><span class="cyc" id="cyc"></span></div>
+<div style="height:440px;margin-top:6px" id="cbox"><canvas id="c"></canvas></div><div class="src" id="axnote"></div></div>
+<div class="col" style="flex:1;min-width:0"><div class="card"><b>📐 상관·시차 (코드로 계산)</b><div class="muted">월별 · 변화율끼리 비교 (집값 전년동월비 vs 금리 12개월 변화 / 다른 지표 전년동월비) · 선택 기간 기준</div>
+<div class="cr" id="corr" style="margin-top:10px"></div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px"><span class="muted">시차 스캔 (k=0~24개월 선행)</span><select id="lagSel" class="sel" style="padding:3px 6px;font-size:12px"></select></div>
+<div style="height:110px"><canvas id="lag"></canvas></div><div class="muted">막대: 해당 지표가 k개월 앞설 때 r · 빨강 = |r| 최대 · <b>상관 ≠ 인과</b></div></div>
+<div class="card ai" style="margin-top:12px" id="ai"></div></div></div>
+<div class="card srcs" style="margin-top:16px"><b>이 그래프의 데이터 출처 · 이용조건</b> <span class="muted">(1단계 비상업 · 확인일 2026-10-30)</span><table style="margin-top:6px" id="srcs"></table></div>
+</div>
+<script src="js/common.js"></script><script src="js/ai.js"></script><script src="js/explorer.js"></script></body></html>

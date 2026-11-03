@@ -1,0 +1,31 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HistoryLab — 무엇이든 시간순으로</title><link rel="stylesheet" href="css/style.css"></head><body>
+<div class="wrap">
+<div class="hero"><h1>무엇이든, 시간순으로 펼쳐 보세요</h1><p>가격·지표의 흐름과 사람·사건의 기록을 같은 시간축에서 비교하고 인사이트를 얻는 곳</p><form id="hs"><input class="search" id="hq" placeholder="🔍 지표, 도시, 인물·분야를 검색하세요 (예: 서울, 패션 디자이너, 일론 머스크)"></form></div>
+<div class="story-only card" style="margin-bottom:20px"><b>📖 스토리 모드</b><div class="sub">데이터를 해설과 함께 보는 모드입니다. 아래 스토리 카드와 탐색기의 자동 요약이 먼저 보입니다. (큐레이션 스토리는 준비 중)</div></div>
+<div class="grid3">
+<div class="card dom"><h2>📈 경제 지표 탐색기</h2><div class="d">한 그래프에 지표를 겹쳐 보고, 지역을 바꿔 비교</div>
+<div style="font-size:13px;font-weight:700;margin-bottom:6px">📍 지역</div><div class="chips" id="regs" style="margin-bottom:12px"></div>
+<div style="font-size:13px;font-weight:700;margin-bottom:6px">겹쳐 볼 지표 (눌러서 바로 시작)</div><div id="ser"></div></div>
+<div class="card dom"><h2>🗣 발언과 기록</h2><div class="d">위인·인물별 인터뷰·연설·강연 영상 아카이브</div>
+<div style="font-size:13px;font-weight:700;margin-bottom:6px">👤 인물 아카이브 <span class="tag live">MVP</span></div>
+<form id="ps"><input class="psearch" id="pq" placeholder="🔍 인물 또는 분야 검색 — 예: 오바마, 김연아, 대통령, 과학자"></form>
+<div class="chips" id="pchips" style="margin:8px 0 12px"></div>
+<div class="item">🏢 기업 연대기 <span class="tag">준비 중</span></div><div class="item">📱 테크 제품 출시 <span class="tag">준비 중</span></div></div>
+<div class="card dom" id="science"><h2>🔬 과학과 사회</h2><div class="d">기술 발전 곡선 · 인구 · 지구 · 문화의 흐름</div><div id="sci"></div></div>
+</div>
+<div class="sec-title">스토리 <span class="tag">준비 중</span></div>
+<div class="grid3"><a class="card" href="explorer.html?region=seoul&series=price,m2,rate"><b>금리 인상기 음영으로 본 서울 집값</b><div class="sub">탐색기 바로가기 · 서울 · 집값×M2×기준금리</div></a>
+<a class="card" href="explorer.html?region=london&series=price,price_nat&mode=rebase"><b>런던 vs 영국 전체</b><div class="sub">탐색기 바로가기 · 100 재기준</div></a>
+<a class="card" href="person.html?id=karl-lagerfeld"><b>칼 라거펠트 — CHANEL 쇼 아카이브</b><div class="sub">발언과 기록 · 인물 아카이브</div></a></div>
+</div>
+<script src="js/common.js"></script><script>
+header('');
+$('#hs').onsubmit=e=>{e.preventDefault();go($('#hq').value)};$('#ps').onsubmit=e=>{e.preventDefault();location.href='people.html?q='+encodeURIComponent($('#pq').value)};
+Promise.all([getJSON('data/regions.json'),getJSON('data/categories.json'),getJSON('data/people/index.json')]).then(([R,C,P])=>{
+ regs.innerHTML=R.regions.filter(r=>['seoul','tokyo','london','nyc','paris','toronto'].includes(r.id)).map(r=>`<a class="chip" href="explorer.html?region=${r.id}">${r.name}</a>`).join('')+'<a class="chip" href="explorer.html">+ 국가·도시</a>';
+ const ic={price:'🏠',m2:'💵',rate:'🏦',fx:'💱',stock:'📊'};
+ ser.innerHTML=['price','m2','rate','fx','stock'].map(k=>`<a class="item live" href="explorer.html?region=seoul&series=price${k=='price'?'':','+k}">${ic[k]} ${R.series_names[k]} <span class="tag ${k=='price'?'live':'real'}">${k=='price'?'기본 선택':'+ 겹치기'}</span></a>`).join('')+C.domains[0].soon.map(s=>`<div class="item">${s} <span class="tag">준비 중</span></div>`).join('');
+ sci.innerHTML=C.domains[2].soon.map(s=>`<div class="item">${s} <span class="tag">준비 중</span></div>`).join('');
+ pchips.innerHTML=[...P.people].filter(p=>p.n).sort((a,b)=>b.n-a.n).slice(0,8).map(p=>`<a class="chip" href="person.html?id=${p.id}">${esc(p.name_ko)} <span class="tag real">아카이브 ${p.n}</span></a>`).join('')+Object.entries(P.fields).map(([k,f])=>`<a class="chip" href="people.html?q=${encodeURIComponent(f.ko)}">${f.ko} ${P.people.filter(p=>p.fields.includes(k)).length}</a>`).join('');
+});
+</script></body></html>
